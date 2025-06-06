@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscrição Hackathon</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f172a, #1e293b);
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .form-container {
+      background: rgba(30, 41, 59, 0.95);
+      padding: 50px 40px;
+      border-radius: 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 2px solid #38bdf8;
+      backdrop-filter: blur(10px);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #facc15;
+      font-size: 2rem;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #bae6fd;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #94a3b8;
+      background: #f8fafc;
+      color: #0f172a;
+      font-size: 1rem;
+      transition: border 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      border: 1px solid #38bdf8;
+      outline: none;
+    }
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 14px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0ea5e9;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Formulário de Inscrição</h1>
+    <form onsubmit="enviarWhatsapp(event)">
+      <label for="nomeGrupo">Nome do Grupo</label>
+      <input type="text" id="nomeGrupo" name="nomeGrupo" required />
+
+      <label for="quantidade">Quantidade de Pessoas</label>
+      <select id="quantidade" name="quantidade" required>
+        <option value="2">2 (Dupla)</option>
+        <option value="3">3 (Trio)</option>
+        <option value="4">4 (Squad)</option>
+      </select>
+
+      <label for="integrantes">Nome e R.A. dos Integrantes</label>
+      <textarea id="integrantes" name="integrantes" rows="5" placeholder="Ex: João - 123456\nMaria - 654321" required></textarea>
+
+      <label for="frontend">O projeto terá Frontend?</label>
+      <select id="frontend" name="frontend" required>
+        <option value="sim">Sim</option>
+        <option value="nao">Não</option>
+      </select>
+
+      <button type="submit">Enviar Inscrição</button>
+    </form>
+  </div>
+
+  <script>
+    function enviarWhatsapp(event) {
+      event.preventDefault();
+      const nomeGrupo = document.getElementById('nomeGrupo').value;
+      const integrantes = document.getElementById('integrantes').value;
+      const numero = '5511957519999';
+      const mensagem = encodeURIComponent(`Inscrição Hackathon\nGrupo: ${nomeGrupo}\nIntegrantes:\n${integrantes}`);
+      alert('Inscrição enviada!');
+      window.open(`https://wa.me/${numero}?text=${mensagem}`, '_blank');
+    }
+  </script>
+</body>
+</html>
+
